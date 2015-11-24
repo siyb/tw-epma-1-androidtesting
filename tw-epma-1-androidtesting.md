@@ -89,6 +89,15 @@
 * onView(MATCHER)/onData(MATCHER) -> perform(ACTION) -> check(ASSERTION)
 * onView(MATCHER)/onData(MATCHER) -> check(ASSERTION)
 
+## Android - Espresso 4
+
+* In order to use Espresso to do UI testing, we have to do the following
+    * Extend ```ActivityInstrumentationTestCase2``` (JUnit TestCase) - alternativly we can utilize @Rule hooks
+    * Inject the Instrumentation we obtain from the ```InstrumentationRegistry```
+    * Start an Activity and maybe Fragment
+* More on the topic in ...
+    
+
 # [Example Code](https://github.com/SphericalElephant/android-example-androidtesting)
 
 ## More Resources
