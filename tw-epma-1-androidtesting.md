@@ -1,6 +1,11 @@
 % Android Testing
 % Patrick Sturm
-% 24.11.2015
+% 16.11.2016
+
+## Information
+
+* Any issues with this presentation? Write a ticket or send me a pull request ;).
+* Repo: [https://github.com/siyb/tw-epma-1-androidtesting](https://github.com/siyb/tw-epma-1-androidtesting)
 
 # Agenda
 
@@ -13,49 +18,49 @@
 
 # Introduction
 
-## Introduction - Android Testing
+## Introduction - 1 - Android Testing
 
 * The Android test framework is build on top of JUnit
 * The framework provides Android specific API that we can use to conduct more specialized tests
 * In todays session, we are going to look at UI tests, since they are intrinsic to Android, we will not cover regular Unit Testing
 
-## Introduction - "Testing" in general
+## Introduction - 2 - "Testing" in general
 
 * The order in which tests execute is not guaranteed
 * Test must therefore not depend on one another
 * Test must be deterministic and must not rely on other code then the code to be tested
-    * use mocks
+  * use mocks
 * Each test must run in a clean environment, reset the context before or after each test (I mean that quite literally!)
 * Don't test external dependencies or framework / language fundamentals
-    * One can assume that Boolean.TRUE is in fact Boolean.TRUE
+  * One can assume that Boolean.TRUE is in fact Boolean.TRUE
 * Only test a single thing (I dare to say Unit here, although it's not entirely true) at a time
 
-## Android - Setup - 1
+## Introduction - 3 - Android Setup
 
 * Before we start:
-    * Enable the developer mode on your test device (click "Build Number" several times)
-    * Disable all animations:
-        * Window
-        * Transition
-        * Animator
+  * Enable the developer mode on your test device (click "Build Number" several times)
+  * Disable all animations:
+    * Window
+    * Transition
+    * Animator
 
-## Android - Setup - 2
+## Introduction - 4 - Android Setup cont.
 
 * Android uses ```InstrumentationTestRunner```, actually an ```Instrumentation``` to execute ```TestCase```s
 * We need to specify which ```InstrumentationTestRunner``` to use, e.g.:
-    * android.test.InstrumentationTestRunner
-         * For regular applications
-    * com.android.test.runner.MultiDexTestRunner
-         * For MultiDex applications (applications that exceed the initial Dex method limit of 65536)
-    * android.support.test.runner.AndroidJUnitRunner
-         * We will be working with this runner (support package!)
+  * android.test.InstrumentationTestRunner
+    * For regular applications
+  * com.android.test.runner.MultiDexTestRunner
+    * For MultiDex applications (applications that exceed the initial Dex method limit of 65536)
+  * android.support.test.runner.AndroidJUnitRunner
+    * We will be working with this runner (support package!)
 
-## Android - Setup - 3
+## Introduction - 5 - Android Setup cont.
 
 * Since the time gradle became the primary Android build system, it's customary to provide the InstrumentationTestRunner instance to use within the build file (before Manifest) - It's all the same really
 * ```testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"```
 
-## Android - Setup - 4
+## Introduction - 6 - Android Setup cont.
 
 * We also need to include the following dependencies in our project, include them with ```androidTestCompile```:
 
@@ -72,29 +77,31 @@
 
 ```
 
-## Android - Espresso 1
+# Espresso
+
+## Espresso - 1 - Cheat Sheet
 
 ![Source: https://google.github.io/](../espresso-cheat-sheet.png)
 
-## Android - Espresso 2
+## Espresso - 2 - Basic API
 
 * Espresso knows:
-    * Matchers - find / (help) inspect views
+  * Matchers - find / (help) inspect views
     * Actions - perform actions on views (e.g. click)
     * Assertions - inspect views
     * Options (adapters only!) - Adapter specific options
 
-## Android - Espresso 3
+## Espresso - 3 - Basic API
 
 * onView(MATCHER)/onData(MATCHER) -> perform(ACTION) -> check(ASSERTION)
 * onView(MATCHER)/onData(MATCHER) -> check(ASSERTION)
 
-## Android - Espresso 4
+## Espresso - 4 - Basic API
 
 * In order to use Espresso to do UI testing, we have to do the following
-    * Extend ```ActivityInstrumentationTestCase2``` (JUnit TestCase) - alternativly we can utilize @Rule hooks
-    * Inject the Instrumentation we obtain from the ```InstrumentationRegistry```
-    * Start an Activity and maybe Fragment
+  * Extend ```ActivityInstrumentationTestCase2``` (JUnit TestCase) - alternativly we can utilize @Rule hooks
+  * Inject the Instrumentation we obtain from the ```InstrumentationRegistry```
+  * Start an Activity and maybe Fragment
 * More on the topic in ...
     
 
@@ -104,3 +111,5 @@
 
 * https://google.github.io/android-testing-support-library/
 * http://chiuki.github.io/advanced-android-espresso/#/
+
+# Any Questions?
