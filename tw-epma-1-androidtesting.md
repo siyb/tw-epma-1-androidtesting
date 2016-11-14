@@ -81,7 +81,7 @@
 
 ## Espresso - 1 - Cheat Sheet
 
-![Source: https://google.github.io/](../espresso-cheat-sheet.png)
+![Source: https://google.github.io/](./espresso-cheat-sheet.png)
 
 ## Espresso - 2 - Basic API
 
