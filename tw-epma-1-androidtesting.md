@@ -1,6 +1,6 @@
 % Android Testing
 % Patrick Sturm
-% 01.03.2017
+% 20.09.2017
 
 ## Information
 
