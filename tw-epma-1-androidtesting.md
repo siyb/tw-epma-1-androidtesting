@@ -15,6 +15,7 @@
 * A few words on testing in general
 * Introduction into espresso
 * Example Code
+* Introduction Into Profiling
 
 # Introduction
 
@@ -111,5 +112,42 @@
 
 * https://google.github.io/android-testing-support-library/
 * http://chiuki.github.io/advanced-android-espresso/#/
+
+# Profiling
+
+## Profiling - 1 - Overview
+
+* Starting from Android Studio, there is a dedicated "Android Profiler" window replacing the "Android Monitor" tools.
+* Requires Android O(reo) on the device / emulator.
+* Realtime memory / cpu monitoring / network activity that correlates application events to make it easier to identify issues in your app.
+* Allows:
+    * recording of calls
+    * heap dumping
+    * inspection of instances and references (allocation tracking)
+    * http call inspection for OkHttp and HttpURLConnection (similar to browser dev tools)
+
+## Profiling - 2 - Getting Started
+
+* Profiling only works on apks that have been build with the **debug** flag.
+* Open View -> Tool Windows -> Android Profiler
+* CPU / MEMORY and NETWORK are clickable and will direct you to detail screens
+    * Dragging a timeline allows inspection (NETWORK / MEMORY only)
+    * Heap Dump can be found in memory tab
+
+## Profiling - 4 - Programmatic Profiling
+
+* You can programmatically start and stop method tracing by invoking ```Debug.startMethodTracing("name")``` and ```Debug.stopMethodTracing()``` respectivly.
+    * Granular control over what you are tracing
+* Make sure your app has the WRITE_EXTERNAL_STORAGE permission before attempting to trace method calls.
+* Traces can be found in the app's external directory and can be read using Android-Studio (Device File Explorer)
+* HProf (heap profile) files can be programmatically dumped using ```Debug.dumpHprofData("name")```
+* Check out the ```Debug``` class for even more options!
+
+## Profiling - 5 - What to look for?
+
+* Memory: Instances of Context (Activity, Service, etc), beware hidden Contexts (e.g. non static inner classes) and native allocations
+* CPU: predictable spikes in correlation with device actions, long lasting executions on wrong threads, constant hight loads, etc
+
+# Profiling Demo
 
 # Any Questions?
