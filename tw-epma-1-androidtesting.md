@@ -21,8 +21,8 @@
 
 ## Introduction - 1 - Android Testing
 
-* The Android test framework is build on top of JUnit
-* The framework provides Android specific API that we can use to conduct more specialized tests
+* The Android test framework is built on top of JUnit
+* The framework provides Android specific APIs that we can use to conduct more specialized tests
 * In todays session, we are going to look at UI tests, since they are intrinsic to Android, we will not cover regular Unit Testing
 
 ## Introduction - 2 - "Testing" in general
